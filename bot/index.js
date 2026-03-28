@@ -4,7 +4,6 @@ import fs from 'fs/promises'
 (async() => {
     // Pages to scrape
     const sections = ['politiki', 'ubukungu', 'imikino', 'ikoranabuhanga', 'amakuru']
-
     try {
         // Launch Chromium browser
         const browser = await puppeteer.launch({
@@ -17,6 +16,8 @@ import fs from 'fs/promises'
 
         // Extract the headlines
         for (let section of sections) {
+            const filename = `../reports/${section}.json`
+
             await page.goto(`https://igihe.com/${section}`, {
                 waitUntil: 'networkidle2'
             })
@@ -29,6 +30,15 @@ import fs from 'fs/promises'
                     link: elt.href
                 }))
             )
+            await fs.appendFile(
+                filename,
+                JSON.stringify({
+                    date: new Date().toString(),
+                    page: section,
+                    headlines
+                }) + '\n'
+            )
+            console.log(`Wrote report to ${filename}`)
         }
         await browser.close()
     } catch(err) {

@@ -1,6 +1,7 @@
 import puppeteer from 'puppeteer'
 
 (async() => {
+    const sections = ['politiki', 'ubukungu', 'imikino', 'ikoranabuhanga']
     try {
         // Launch Chromium browser
         const browser = await puppeteer.launch({
@@ -9,22 +10,28 @@ import puppeteer from 'puppeteer'
 
         // Open new tab
         const page = await browser.newPage()
-
-        // Navigate to igihe.com
-        await page.goto('https://igihe.com/politiki', {
-            waitUntil: 'networkidle2'
-        })
+        await page.setViewport(null)
 
         // Extract the headlines
-        await page.waitForSelector('.homenews-title > a')
-        const headlines = await page.$$eval(
-            '.homenews-title > a',
-            elts => elts.map(elt => ({
-                text: elt.textContent,
-                link: elt.href
-            }))
-        )
-        console.log(headlines)
+        for (let section of sections) {
+            await page.goto(`https://igihe.com/${section}`, {
+                waitUntil: 'networkidle2'
+            })
+
+            await page.waitForSelector('.homenews-title > a')
+            const headlines = await page.$$eval(
+                '.homenews-title > a',
+                elts => elts.map(elt => ({
+                    text: elt.textContent,
+                    link: elt.href
+                }))
+            )
+            console.log({
+                page: section,
+                headlines
+            })
+        }
+        await browser.close()
     } catch(err) {
         console.error(err)
     }

@@ -1,0 +1,22 @@
+{
+  "name": "news-aggregator-bot",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "A bot that scrapes top headlines from news websites",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "bot": "node index.js"
+  },
+  "keywords": [
+    "node.js",
+    "puppeteer",
+    "web-scraping",
+    "bot"
+  ],
+  "author": "mgalen007",
+  "license": "ISC",
+  "dependencies": {
+    "puppeteer": "^24.40.0"
+  }
+}

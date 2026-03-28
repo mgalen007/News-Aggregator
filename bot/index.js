@@ -1,7 +1,10 @@
 import puppeteer from 'puppeteer'
+import fs from 'fs/promises'
 
 (async() => {
+    // Pages to scrape
     const sections = ['politiki', 'ubukungu', 'imikino', 'ikoranabuhanga', 'amakuru']
+
     try {
         // Launch Chromium browser
         const browser = await puppeteer.launch({
@@ -26,10 +29,6 @@ import puppeteer from 'puppeteer'
                     link: elt.href
                 }))
             )
-            console.log({
-                page: section,
-                headlines
-            })
         }
         await browser.close()
     } catch(err) {

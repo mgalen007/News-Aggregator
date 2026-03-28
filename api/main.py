@@ -9,4 +9,3 @@ def health_check():
         "status": "ok",
         "message": "Server running"
     }
-

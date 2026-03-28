@@ -1,7 +1,7 @@
 import puppeteer from 'puppeteer'
 
 (async() => {
-    const sections = ['politiki', 'ubukungu', 'imikino', 'ikoranabuhanga']
+    const sections = ['politiki', 'ubukungu', 'imikino', 'ikoranabuhanga', 'amakuru']
     try {
         // Launch Chromium browser
         const browser = await puppeteer.launch({

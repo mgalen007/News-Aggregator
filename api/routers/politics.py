@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 router = APIRouter()
-politics_file = (Path(__file__).parent.parent.parent / 'reports/politiki.json').resolve()
+politics_file = (Path(__file__).parent.parent / 'reports/politiki.json').resolve()
 
 # Load the JSON file
 try:

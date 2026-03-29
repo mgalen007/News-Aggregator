@@ -3,7 +3,7 @@ import json
 from pathlib import Path
 
 router = APIRouter()
-sports_file = (Path(__file__).parent.parent.parent / 'reports/imikino.json').resolve()
+sports_file = (Path(__file__).parent.parent / 'reports/imikino.json').resolve()
 
 # Load the JSON data
 try:

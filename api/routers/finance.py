@@ -1,8 +1,20 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, HTTPException
 import json
+from pathlib import Path
 
 router = APIRouter()
-finance_file = '../reports/ubukungu.json'
+finance_file = (Path(__file__).parent.parent.parent / 'reports/ubukungu.json').resolve()
+
+# Load the JSON data
+try: 
+    with open(finance_file, 'r') as f:
+        data = json.load(f)
+except FileNotFoundError as e:
+    print(f'File not found: {e}')
+    data = None
+except json.JSONDecodeError as e:
+    print(f'Invalid JSON: {e}')
+    data = None
 
 @router.get('/test')
 def test_finance():
@@ -13,6 +25,10 @@ def test_finance():
 
 @router.get('/')
 def get_finance():
-    with open(finance_file, 'r') as f:
-        data = json.load(f)
-    return data
+    if data is not None:
+        return data
+    else:
+        raise HTTPException(
+            status_code=500,
+            detail='Could not fetch data'
+        )

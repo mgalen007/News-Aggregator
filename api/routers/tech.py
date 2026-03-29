@@ -16,13 +16,7 @@ except json.JSONDecodeError as e:
     print(f'Invalid JSON: {e}')
     data = None
 
-@router.get('/test')
-def test_tech():
-    return {
-        "status": "ok",
-        "message": "/tech endpoint working"
-    }
-
+# Main GET endpoint
 @router.get('/')
 def get_tech():
     if data is not None:

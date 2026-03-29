@@ -14,5 +14,10 @@ def test_tech():
 @router.get('/')
 def get_tech():
     with open(tech_file, 'r') as f:
-        data = json.load(f)
+        if not len(f) == 0:
+            data = json.load(f)
+        else:
+            data = {
+                'error': 'No content found'
+            }
     return data

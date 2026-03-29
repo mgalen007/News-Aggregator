@@ -16,7 +16,7 @@ import fs from 'fs/promises'
 
         // Extract the headlines
         for (let section of sections) {
-            const filename = `../reports/${section}.json`
+            const filename = `../api/reports/${section}.json`
 
             await page.goto(`https://igihe.com/${section}`, {
                 waitUntil: 'networkidle2'

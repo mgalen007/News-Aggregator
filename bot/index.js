@@ -7,7 +7,7 @@ import fs from 'fs/promises'
     try {
         // Launch Chromium browser
         const browser = await puppeteer.launch({
-            headless: false
+            headless: true
         })
 
         // Open new tab

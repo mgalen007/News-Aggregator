@@ -99,30 +99,6 @@ The API will be available at **http://localhost:8000**
 
 ---
 
-## Screenshots
-
-### Swagger UI — available endpoints
-
-<div align="center">
-  <img src="assets/swagger2.png" width="49%" alt="Swagger UI - top" />
-  <img src="assets/swagger1.png" width="49%" alt="Swagger UI - Sports endpoint" />
-</div>
-
-### Bot scraping headlines and writing JSON reports
-![Bot running](assets/bot.png)
-
-### API server running in VS Code
-![API server](assets/api.png)
-
-### Sample responses via Postman
-
-<div align="center">
-  <img src="assets/news.png" width="49%" alt="GET /api/news response" />
-  <img src="assets/tech.png" width="49%" alt="GET /api/tech response" />
-</div>
-
----
-
 ## Roadmap
 
 - [ ] **PostgreSQL integration** — replace JSON file storage with a proper database
